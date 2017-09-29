@@ -30,7 +30,8 @@ RUN apk update && apk --update add rsyslog postfix php7-ldap php7-mbstring php7-
   rm -rf /package-conf
 
 WORKDIR /app/html
-RUN composer install
+RUN composer install && \
+  rm -rf /root/.composer/cache
 
 # Add mutable app files from build.
 COPY ./build/src ${SYMFONY_ROOT_DIR}/src
