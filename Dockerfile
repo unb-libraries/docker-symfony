@@ -2,8 +2,8 @@ FROM unblibraries/nginx-php:alpine-php7
 MAINTAINER UNB Libraries Systems <libsystems_at_unb.ca>
 
 LABEL ca.unb.lib.generator="symfony"
-LABEL vcs-ref="alpine-nginx-php7-8.x"
-LABEL vcs-url="https://github.com/unb-libraries/lib.unb.ca"
+LABEL vcs-ref="alpine-nginx-php7-3.3"
+LABEL vcs-url="https://github.com/unb-libraries/drupal-symfony"
 ARG DRUPAL_COMPOSER_DEV=no-dev
 
 ENV SYMFONY_ROOT_DIR ${APP_ROOT}/html
