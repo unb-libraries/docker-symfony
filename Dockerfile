@@ -10,12 +10,12 @@ ENV APP_CACHE_DIR ${SYMFONY_ROOT_DIR}/cache
 ENV APP_LOG_DIR ${SYMFONY_ROOT_DIR}/log
 ENV APP_WEBROOT ${SYMFONY_ROOT_DIR}/web
 
-COPY ./build/composer.json /app/html/composer.json
+COPY ./build /build
 COPY ./package-conf /package-conf
 COPY ./scripts/container /scripts
 
-# Add symfony, required PHP packages.
-RUN apk update && apk --update add rsyslog postfix php7-ldap php7-mbstring php7-ctype php7-tokenizer php7-simplexml php7-dom php7-session php7-session php7-intl php7-pdo && \
+# Add base symfony, required PHP packages.
+RUN apk update && apk --update add rsync rsyslog postfix php7-ldap php7-mbstring php7-ctype php7-tokenizer php7-simplexml php7-dom php7-session php7-session php7-intl php7-pdo && \
   rm -f /var/cache/apk/* && \
   curl -LsS https://symfony.com/installer -o /usr/local/bin/symfony && \
   chmod a+x /usr/local/bin/symfony && \
@@ -28,10 +28,11 @@ RUN apk update && apk --update add rsyslog postfix php7-ldap php7-mbstring php7-
   mv /package-conf/php/app-php-fpm.conf /etc/php7/php-fpm.d/zz_app.conf && \
   rm -rf /package-conf
 
+# Build application defined by build dir.
 WORKDIR /app/html
-RUN composer install --no-ansi --prefer-dist && \
-  rm -rf /root/.composer/cache
-
-# Add mutable app files from build.
-COPY ./build/src ${SYMFONY_ROOT_DIR}/src
-COPY ./build/app ${SYMFONY_ROOT_DIR}/app
+RUN rsync -a --no-perms --no-owner --no-group --delete  /build/composer.json ${SYMFONY_ROOT_DIR}/ && \
+  composer install --no-ansi --prefer-dist && \
+  rm -rf /root/.composer/cache && \
+  rsync -a --no-perms --no-owner --no-group --delete /build/src/ ${SYMFONY_ROOT_DIR}/src/ && \
+  rsync -a --no-perms --no-owner --no-group --delete /build/app/ ${SYMFONY_ROOT_DIR}/app/ && \
+  rm -rf /build
