@@ -1,0 +1,12 @@
+version: '2'
+
+services:
+  docker.symfony.local:
+    build: .
+    container_name: docker.symfony.local
+    expose:
+     - "80"
+    ports:
+      - "5080:80"
+    env_file:
+      - ./env/symfony.env
