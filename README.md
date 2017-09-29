@@ -1,4 +1,4 @@
-# unblibraries/symfony [![](https://images.microbadger.com/badges/image/unblibraries/symfony:alpine-nginx-php7-3.3.svg)](http://microbadger.com/images/unblibraries/symfony:alpine-nginx-php7-3.3 "Get your own image badge on microbadger.com") [![Build Status](https://travis-ci.org/unb-libraries/docker-symfony.svg?branch=alpine-nginx-php7-3.3)](https://travis-ci.org/unb-libraries/docker-symfony)
+# unblibraries/symfony [![](https://images.microbadger.com/badges/image/unblibraries/symfony:3.x-alpine-nginx-php7.svg)](http://microbadger.com/images/unblibraries/symfony:3.x-alpine-nginx-php7 "Get your own image badge on microbadger.com") [![Build Status](https://travis-ci.org/unb-libraries/docker-symfony.svg?branch=3.x-alpine-nginx-php7)](https://travis-ci.org/unb-libraries/docker-symfony)
 
 A lightweight extensible Symfony docker image, suitable for a development-to-production workflow.
 
@@ -6,7 +6,7 @@ A lightweight extensible Symfony docker image, suitable for a development-to-pro
 Looking for a really quick start?
 
 ```
-git clone -b alpine-nginx-php7-3.3 git@github.com:unb-libraries/docker-symfony.git docker-symfony
+git clone -b 3.x-alpine-nginx-php7 git@github.com:unb-libraries/docker-symfony.git docker-symfony
 cd docker-symfony
 docker-compose up -d; docker-compose logs
 ```
@@ -20,7 +20,7 @@ This image offers little benefit on its own, and shines when serving as the base
 
 |                    Tag                    | Symfony | PHP   | Size                                                                                                                                                                                               | Status                                                                                                                                                    |
 |:-----------------------------------------:|--------|-------|----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|-----------------------------------------------------------------------------------------------------------------------------------------------------------|
-| unblibraries/symfony:alpine-nginx-php7-3.3 |  3.3.*  | 7.1.x | [![](https://images.microbadger.com/badges/image/unblibraries/symfony:alpine-nginx-php7-3.3.svg)](http://microbadger.com/images/unblibraries/symfony:alpine-nginx-php7-3.3 "Get your own image badge on microbadger.com") | [![Build Status](https://travis-ci.org/unb-libraries/docker-symfony.svg?branch=alpine-nginx-php7-3.3)](https://travis-ci.org/unb-libraries/docker-symfony) |
+| unblibraries/symfony:3.x-alpine-nginx-php7 |  3.3.*  | 7.1.x | [![](https://images.microbadger.com/badges/image/unblibraries/symfony:3.x-alpine-nginx-php7.svg)](http://microbadger.com/images/unblibraries/symfony:3.x-alpine-nginx-php7 "Get your own image badge on microbadger.com") | [![Build Status](https://travis-ci.org/unb-libraries/docker-symfony.svg?branch=3.x-alpine-nginx-php7)](https://travis-ci.org/unb-libraries/docker-symfony) |
 
 
 ## General Use
@@ -29,7 +29,7 @@ docker run \
        --rm \
        --name symfony \
        -p 80:80 \
-       unblibraries/symfony:alpine-nginx-php7-8.x
+       unblibraries/symfony:3.x-alpine-nginx-php7
 ```
 
 ## License
